@@ -1,0 +1,18 @@
+language: ruby
+
+rvm:
+  - 2.1
+  - 2.2
+
+env:
+  matrix:
+    -
+    - ACTIVE_RECORD_VERSION=4.0
+    - ACTIVE_RECORD_VERSION=4.1
+    - ACTIVE_RECORD_VERSION=4.2
+
+script: "bundle exec rake spec"
+
+branches:
+  only:
+    - master
