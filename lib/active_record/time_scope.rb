@@ -34,7 +34,7 @@ module ActiveRecord
       end
 
       def time_scope_verb(attr)
-        attr.sub TIME_POSTFIX_REGEXP, ""
+        attr.to_s.sub TIME_POSTFIX_REGEXP, ""
       end
     end
   end
