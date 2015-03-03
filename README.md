@@ -1,22 +1,17 @@
-# ActiveRecord Time Scopes
+# Date/time scopes for ActiveRecord
+
+[![Build Status](https://travis-ci.org/907th/activerecord-time-scope.svg?branch=master)](https://travis-ci.org/907th/activerecord-time-scope)
 
 TODO: Write a gem description
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Via Gemfile (using Bundler):
 
 ```ruby
-gem 'activerecord-time-scopes'
+# Gemfile
+gem "activerecord-time-scope"
 ```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install activerecord-time-scopes
 
 ## Usage
 
@@ -24,8 +19,10 @@ TODO: Write usage instructions here
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/activerecord-time-scopes/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+Feel free to contribute!
+
+## License
+
+Distributed under the MIT License (see LICENSE.txt).
+
+Copyright (c) 2015 Daisuke Taniwaki, Alexey Chernenkov
