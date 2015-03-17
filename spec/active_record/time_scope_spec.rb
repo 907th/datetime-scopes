@@ -42,8 +42,10 @@ RSpec.describe ActiveRecord::TimeScope do
 
     it "delegates time scope calls to the proxy object" do
       scope_names.each do |scope_name|
-        expect_any_instance_of(ActiveRecord::TimeScope::TimeProxy).to receive(scope_name).with(1, 2, 3)
-        subject.send "foo_#{scope_name}", 1, 2, 3
+        dbl = double("result")
+        expect_any_instance_of(ActiveRecord::TimeScope::TimeProxy).to receive(scope_name).with(1, 2, 3).and_return(dbl)
+        res = subject.send("foo_#{scope_name}", 1, 2, 3)
+        expect(res).to eq(dbl)
       end
     end
   end
@@ -84,8 +86,10 @@ RSpec.describe ActiveRecord::TimeScope do
 
     it "delegates date scope calls to the proxy object" do
       scope_names.each do |scope_name|
-        expect_any_instance_of(ActiveRecord::TimeScope::DateProxy).to receive(scope_name).with(1, 2, 3)
-        subject.send "foo_#{scope_name}", 1, 2, 3
+        dbl = double("result")
+        expect_any_instance_of(ActiveRecord::TimeScope::DateProxy).to receive(scope_name).with(1, 2, 3).and_return(dbl)
+        res = subject.send("foo_#{scope_name}", 1, 2, 3)
+        expect(res).to eq(dbl)
       end
     end
   end
