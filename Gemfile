@@ -5,5 +5,6 @@ gem "activerecord", "~> #{ENV["ACTIVE_RECORD_VERSION"]}" if ENV["ACTIVE_RECORD_V
 gem "sqlite3"
 gem "rspec", "~> 3.2"
 gem "database_cleaner"
+gem "codeclimate-test-reporter"
 
 gemspec

@@ -154,9 +154,9 @@ before passing them to database.
 
 ## TODO
 
-* More specs.
 * `*_scope` with `verb: false` to omit the scopes' prefix.
-* Setup a coverage report with CodeClimate.
+* `*_scope` with `time_zone: "..."` to do queries in custom time zone.
+* MORE specs.
 
 ## Contributing
 

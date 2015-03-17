@@ -5,6 +5,8 @@ rvm:
   - 2.2
 
 env:
+  global:
+    - CODECLIMATE_REPO_TOKEN=e8dd774ef981922c45a7f04c0e705470ff02101a0bc1fe1992dfe1564f6512e0
   matrix:
     -
     - ACTIVE_RECORD_VERSION=4.0.0

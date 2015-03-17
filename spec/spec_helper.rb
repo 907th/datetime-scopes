@@ -1,3 +1,6 @@
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 require "rspec/core"
 require "database_cleaner"
 require "activerecord-time-scope"
