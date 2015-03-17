@@ -1,6 +1,8 @@
 # Date/time scopes for ActiveRecord
 
 [![Build Status](https://travis-ci.org/907th/activerecord-time-scope.svg?branch=master)](https://travis-ci.org/907th/activerecord-time-scope)
+[![Code Climate](https://codeclimate.com/github/907th/activerecord-time-scope/badges/gpa.svg)](https://codeclimate.com/github/907th/activerecord-time-scope)
+[![Test Coverage](https://codeclimate.com/github/907th/activerecord-time-scope/badges/coverage.svg)](https://codeclimate.com/github/907th/activerecord-time-scope)
 
 Add usefull time-related scopes to your ActiveRecord model.
 
@@ -154,7 +156,7 @@ before passing them to database.
 
 * More specs.
 * `*_scope` with `verb: false` to omit the scopes' prefix.
-* Connect to CodeClimate.
+* Setup a coverage report with CodeClimate.
 
 ## Contributing
 
