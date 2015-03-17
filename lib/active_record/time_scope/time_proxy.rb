@@ -60,24 +60,24 @@ module ActiveRecord
 
       # Strict equations
 
-      def before(time)        ; model.where "#{attr} < ?", time.in_time_zone       ; end
+      def before(time)        ; model.where "#{attr} < ?", time.in_time_zone ; end
       def before_day(day)     ; before day.in_time_zone.beginning_of_day     ; end
       def before_month(month) ; before month.in_time_zone.beginning_of_month ; end
       def before_year(year)   ; before year.in_time_zone.beginning_of_year   ; end
 
       def after(time)        ; model.where "#{attr} > ?", time.in_time_zone ; end
-      def after_day(day)     ; after day.in_time_zone.end_of_day      ; end
-      def after_month(month) ; after month.in_time_zone.end_of_month  ; end
-      def after_year(year)   ; after year.in_time_zone.end_of_year    ; end
+      def after_day(day)     ; after day.in_time_zone.end_of_day            ; end
+      def after_month(month) ; after month.in_time_zone.end_of_month        ; end
+      def after_year(year)   ; after year.in_time_zone.end_of_year          ; end
 
       # Non-strict equations
 
-      def at_or_before(time)        ; model.where "#{attr} <= ?", time.in_time_zone      ; end
-      def at_or_before_day(day)     ; at_or_before day.in_time_zone.end_of_day     ; end
-      def at_or_before_month(month) ; at_or_before month.in_time_zone.end_of_month ; end
-      def at_or_before_year(year)   ; at_or_before year.in_time_zone.end_of_year   ; end
+      def at_or_before(time)        ; model.where "#{attr} <= ?", time.in_time_zone ; end
+      def at_or_before_day(day)     ; at_or_before day.in_time_zone.end_of_day      ; end
+      def at_or_before_month(month) ; at_or_before month.in_time_zone.end_of_month  ; end
+      def at_or_before_year(year)   ; at_or_before year.in_time_zone.end_of_year    ; end
 
-      def at_or_after(time)        ; model.where "#{attr} >= ?", time.in_time_zone           ; end
+      def at_or_after(time)        ; model.where "#{attr} >= ?", time.in_time_zone     ; end
       def at_or_after_day(day)     ; at_or_after day.in_time_zone.beginning_of_day     ; end
       def at_or_after_month(month) ; at_or_after month.in_time_zone.beginning_of_month ; end
       def at_or_after_year(year)   ; at_or_after year.in_time_zone.beginning_of_year   ; end
