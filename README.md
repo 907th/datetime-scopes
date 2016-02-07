@@ -1,5 +1,6 @@
 # Date/time scopes for ActiveRecord models
 
+[![Gem Version](https://badge.fury.io/rb/datetime-scopes.svg)](https://badge.fury.io/rb/datetime-scopes)
 [![Build Status](https://travis-ci.org/907th/datetime-scopes.svg?branch=master)](https://travis-ci.org/907th/datetime-scopes)
 [![Code Climate](https://codeclimate.com/github/907th/datetime-scopes/badges/gpa.svg)](https://codeclimate.com/github/907th/datetime-scopes)
 [![Test Coverage](https://codeclimate.com/github/907th/datetime-scopes/badges/coverage.svg)](https://codeclimate.com/github/907th/datetime-scopes/coverage)
