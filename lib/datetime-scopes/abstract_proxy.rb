@@ -1,7 +1,6 @@
 module DateTimeScopes
   class AbstractProxy
-    def initialize(klass:, attribute:, time_zone:)
-      @klass = klass
+    def initialize(attribute:, time_zone:)
       @attribute = attribute
       @time_zone = time_zone
     end

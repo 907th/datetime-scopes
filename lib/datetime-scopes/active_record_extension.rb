@@ -10,7 +10,6 @@ module DateTimeScopes
     module ClassMethods
       def datetime_scopes(attr, prefix: nil, time_zone: ::Time.zone)
         proxy = DateTimeProxy.new(
-          klass: self,
           attribute: "#{table_name}.#{attr}",
           time_zone: time_zone
         )
@@ -20,7 +19,6 @@ module DateTimeScopes
 
       def date_scopes(attr, prefix: nil, time_zone: nil)
         proxy = DateProxy.new(
-          klass: self,
           attribute: "#{table_name}.#{attr}",
           time_zone: time_zone
         )
@@ -33,7 +31,7 @@ module DateTimeScopes
       def declare_datetime_scopes(prefix, proxy)
         proxy.proxy_methods.each do |method_name|
           scope_name = "#{prefix}_#{method_name}"
-          scope scope_name, -> (*attrs) { proxy.send method_name, *attrs }
+          scope scope_name, -> (*attrs) { proxy.send method_name, self, *attrs }
         end
       end
 
