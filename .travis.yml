@@ -7,9 +7,10 @@ addons:
   code_climate:
     repo_token: ca3a5a1d9af873ba0b6c6fa198a1e9e10c12c738211243d279181f58ca2c73ea
 
-matrix:
-  - RAILS_VERSION=4.0.0
-  - RAILS_VERSION=4.1.0
-  - RAILS_VERSION=4.2.0
+env:
+  matrix:
+    - RAILS_VERSION=4.0.0
+    - RAILS_VERSION=4.1.0
+    - RAILS_VERSION=4.2.0
 
 script: "bundle exec rspec --format=progress --no-color"
