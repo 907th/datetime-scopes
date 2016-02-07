@@ -24,65 +24,65 @@ end
 Now your model has these scopes:
 
 <table>
-<tr>
-<td>
-  for <b>created_at</b>
-</td>
-<td>
-  for <b>birthday</b>
-</td>
-</tr>
-<tr>
-<td>
-
-- created_within(from, to)
-- created_within_days(from, to)
-- created_within_months(from, to)
-- created_within_years(from, to)
-- created_on_day(t)
-- created_on_month(t)
-- created_on_year(t)
-- created_before(t)
-- created_before_day(t)
-- created_before_month(t)
-- created_before_year(t)
-- created_after(t)
-- created_after_day(t)
-- created_after_month(t)
-- created_after_year(t)
-- created_on_or_before(t)
-- created_on_or_before_day(t)
-- created_on_or_before_month(t)
-- created_on_or_before_year(t)
-- created_on_or_after(t)
-- created_on_or_after_day(t)
-- created_on_or_after_month(t)
-- created_on_or_after_year(t)
-
-</td>
-<td>
-
-- birthday_within_days(from, to)
-- birthday_within_months(from, to)
-- birthday_within_years(from, to)
-- birthday_on_day(t)
-- birthday_on_month(t)
-- birthday_on_year(t)
-- birthday_before_day(t)
-- birthday_before_month(t)
-- birthday_before_year(t)
-- birthday_after_day(t)
-- birthday_after_month(t)
-- birthday_after_year(t)
-- birthday_on_or_before_day(t)
-- birthday_on_or_before_month(t)
-- birthday_on_or_before_year(t)
-- birthday_on_or_after_day(t)
-- birthday_on_or_after_month(t)
-- birthday_on_or_after_year(t)
-
-</td>
-</tr>
+  <tr>
+    <td>
+      for <b>created_at</b>
+    </td>
+    <td>
+      for <b>birthday</b>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <ul>
+        <li>created_within(from, to)</li>
+        <li>created_within_days(from, to)</li>
+        <li>created_within_months(from, to)</li>
+        <li>created_within_years(from, to)</li>
+        <li>created_on_day(t)</li>
+        <li>created_on_month(t)</li>
+        <li>created_on_year(t)</li>
+        <li>created_before(t)</li>
+        <li>created_before_day(t)</li>
+        <li>created_before_month(t)</li>
+        <li>created_before_year(t)</li>
+        <li>created_after(t)</li>
+        <li>created_after_day(t)</li>
+        <li>created_after_month(t)</li>
+        <li>created_after_year(t)</li>
+        <li>created_on_or_before(t)</li>
+        <li>created_on_or_before_day(t)</li>
+        <li>created_on_or_before_month(t)</li>
+        <li>created_on_or_before_year(t)</li>
+        <li>created_on_or_after(t)</li>
+        <li>created_on_or_after_day(t)</li>
+        <li>created_on_or_after_month(t)</li>
+        <li>created_on_or_after_year(t)</li>
+      </ul>
+    </td>
+    <td valign="top">
+      <ul>
+        <li>birthday_within_days(from, to)</li>
+        <li>birthday_within_months(from, to)</li>
+        <li>birthday_within_years(from, to)</li>
+        <li>birthday_on_day(t)</li>
+        <li>birthday_on_month(t)</li>
+        <li>birthday_on_year(t)</li>
+        <li>birthday_before_day(t)</li>
+        <li>birthday_before_month(t)</li>
+        <li>birthday_before_year(t)</li>
+        <li>birthday_after_day(t)</li>
+        <li>birthday_after_month(t)</li>
+        <li>birthday_after_year(t)</li>
+        <li>birthday_on_or_before_day(t)</li>
+        <li>birthday_on_or_before_month(t)</li>
+        <li>birthday_on_or_before_year(t)</li>
+        <li>birthday_on_or_after_day(t)</li>
+        <li>birthday_on_or_after_month(t)</li>
+        <li>birthday_on_or_after_year(t)</li>
+      </ul>
+    </td>
+  </tr>
 </table>
 
 Examples:
