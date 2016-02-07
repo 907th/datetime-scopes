@@ -31,7 +31,7 @@ module DateTimeScopes
 
     def within_days(rel, from, to, time_zone: @time_zone)
       rel.where(
-        "#{@attribute}) >= ? AND #{@attribute} <= ?",
+        "#{@attribute} >= ? AND #{@attribute} <= ?",
         from.in_time_zone(time_zone).to_date,
         to.in_time_zone(time_zone).to_date
       )
