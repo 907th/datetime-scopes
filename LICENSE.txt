@@ -1,4 +1,4 @@
-Copyright (c) 2015 Daisuke Taniwaki, Alexey Chernenkov
+Copyright (c) 2015 Alexey Chernenkov
 
 MIT License
 

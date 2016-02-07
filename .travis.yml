@@ -1,20 +1,15 @@
 language: ruby
 
 rvm:
-  - 2.1
-  - 2.2
+  - 2.3
 
-env:
-  global:
-    - CODECLIMATE_REPO_TOKEN=e8dd774ef981922c45a7f04c0e705470ff02101a0bc1fe1992dfe1564f6512e0
-  matrix:
-    -
-    - ACTIVE_RECORD_VERSION=4.0.0
-    - ACTIVE_RECORD_VERSION=4.1.0
-    - ACTIVE_RECORD_VERSION=4.2.0
+addons:
+  code_climate:
+    repo_token: ca3a5a1d9af873ba0b6c6fa198a1e9e10c12c738211243d279181f58ca2c73ea
 
-script: "bundle exec rake spec"
+matrix:
+  - RAILS_VERSION=4.0.0
+  - RAILS_VERSION=4.1.0
+  - RAILS_VERSION=4.2.0
 
-branches:
-  only:
-    - master
+script: "bundle exec rspec --format=progress --no-color"

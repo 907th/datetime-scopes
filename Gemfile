@@ -1,9 +1,12 @@
 source "https://rubygems.org"
 
-gem "activerecord", "~> #{ENV["ACTIVE_RECORD_VERSION"]}" if ENV["ACTIVE_RECORD_VERSION"].to_s != ""
+if ENV["RAILS_VERSION"]
+  gem "activerecord", "~> #{ENV["RAILS_VERSION"]}"
+  gem "activesupport", "~> #{ENV["RAILS_VERSION"]}"
+end
 
 gem "sqlite3"
-gem "rspec", "~> 3.2"
+gem "rspec", "~> 3.4.0"
 gem "database_cleaner"
 gem "codeclimate-test-reporter"
 

@@ -1,169 +1,139 @@
-# Date/time scopes for ActiveRecord
+# Date/time scopes for ActiveRecord models
 
-[![Build Status](https://travis-ci.org/907th/activerecord-time-scope.svg?branch=master)](https://travis-ci.org/907th/activerecord-time-scope)
-[![Code Climate](https://codeclimate.com/github/907th/activerecord-time-scope/badges/gpa.svg)](https://codeclimate.com/github/907th/activerecord-time-scope)
-[![Test Coverage](https://codeclimate.com/github/907th/activerecord-time-scope/badges/coverage.svg)](https://codeclimate.com/github/907th/activerecord-time-scope)
+[![Build Status](https://travis-ci.org/907th/datetime-scopes.svg?branch=master)](https://travis-ci.org/907th/datetime-scopes)
+[![Code Climate](https://codeclimate.com/github/907th/datetime-scopes/badges/gpa.svg)](https://codeclimate.com/github/907th/datetime-scopes)
+[![Test Coverage](https://codeclimate.com/github/907th/datetime-scopes/badges/coverage.svg)](https://codeclimate.com/github/907th/datetime-scopes/coverage)
 
-Add usefull time-related scopes to your ActiveRecord model.
+Date/time scopes for ActiveRecord models you always missed! With proper time-zones support.
 
-## Installation
-
-Via Gemfile (using Bundler):
+## Quick start
 
 ```ruby
 # Gemfile
-gem "activerecord-time-scope"
+gem "datetime-scopes"
 ```
-
-## Usage
-
-### With `datetime` attributes
-
-Use class-level `time_scope` method with the name of the attribute:
 
 ```ruby
 # app/models/my_model.rb
 class MyModel < ActiveRecord::Base
-  time_scope :created_at
+  datetime_scopes :created_at  # with 'datetime' typed attribute
+  date_scopes :birthday        # with 'date' typed attribute
 end
 ```
 
-Now the model has these scopes:
-* created_within(from, to)
-* created_within_days(from, to)
-* created_within_months(from, to)
-* created_within_years(from, to)
-* created_at_day(t)
-* created_at_month(t)
-* created_at_year(t)
-* created_before(t)
-* created_before_day(t)
-* created_before_month(t)
-* created_before_year(t)
-* created_after(t)
-* created_after_day(t)
-* created_after_month(t)
-* created_after_year(t)
-* created_at_or_before(t)
-* created_at_or_before_day(t)
-* created_at_or_before_month(t)
-* created_at_or_before_year(t)
-* created_at_or_after(t)
-* created_at_or_after_day(t)
-* created_at_or_after_month(t)
-* created_at_or_after_year(t)
+Now your model has these scopes:
+
+<table>
+<tr>
+<td>
+  for <b>created_at</b>
+</td>
+<td>
+  for <b>birthday</b>
+</td>
+</tr>
+<tr>
+<td>
+
+- created_within(from, to)
+- created_within_days(from, to)
+- created_within_months(from, to)
+- created_within_years(from, to)
+- created_on_day(t)
+- created_on_month(t)
+- created_on_year(t)
+- created_before(t)
+- created_before_day(t)
+- created_before_month(t)
+- created_before_year(t)
+- created_after(t)
+- created_after_day(t)
+- created_after_month(t)
+- created_after_year(t)
+- created_on_or_before(t)
+- created_on_or_before_day(t)
+- created_on_or_before_month(t)
+- created_on_or_before_year(t)
+- created_on_or_after(t)
+- created_on_or_after_day(t)
+- created_on_or_after_month(t)
+- created_on_or_after_year(t)
+
+</td>
+<td>
+
+- birthday_within_days(from, to)
+- birthday_within_months(from, to)
+- birthday_within_years(from, to)
+- birthday_on_day(t)
+- birthday_on_month(t)
+- birthday_on_year(t)
+- birthday_before_day(t)
+- birthday_before_month(t)
+- birthday_before_year(t)
+- birthday_after_day(t)
+- birthday_after_month(t)
+- birthday_after_year(t)
+- birthday_on_or_before_day(t)
+- birthday_on_or_before_month(t)
+- birthday_on_or_before_year(t)
+- birthday_on_or_after_day(t)
+- birthday_on_or_after_month(t)
+- birthday_on_or_after_year(t)
+
+</td>
+</tr>
+</table>
 
 Examples:
 
 ```ruby
-# The first record created yesterday
-MyModel.created_at_day(Date.yesterday).order(:created_at).first
+# All records created yesterday (in current `::Time.zone`)
+MyModel.created_on_day(Date.yesterday)
 
-# Records created last month
-MyModel.created_at_month(Time.zone.now.last_month)
+# Records created since 11 Sep 2001 (in current `::Time.zone`)
+MyModel.created_on_or_after("2001.09.11")
 
-# Records created today
-MyModel.created_at_day(Time.zone.now)
+# Records create since 11 Sep 2001 (in New York). Yes, the result may differ to previous example!
+MyModel.created_on_or_after("2001.09.11", time_zone: "Eastern Time (US & Canada)")
+
+# Records with birthday in 2015
+MyModel.birthday_on_year(Date.new 2015)
 ```
 
-#### About the scopes' prefix
+## Time-zone support
 
-If the name of the attribute ends with `_at`, `_on`, `_time`, `_date` then `time_scope`
-will drop that ending and use the rest of the name as a prefix of the scopes.
-In all other cases `time_scope` use the name of the attribute as a prefix.
+You know, when it is Sunday in San Francisco, it is Monday in Manila!
+All parameters passed to a date/time scopes are first converted to a
+project-specific (`::Time.zone`) or specified (`time_zone: "XXX"` param) time-zone with the help
+of magic ActiveSupport's `#in_time_zone` helper. See `rake time:zones:all` for
+all supported time-zones.
 
-You can define a custom prefix for the scopes with the `verb` keyword-argument:
+## Additional options
+
+You can pass a default time-zone and custom scopes' prefix to a `date(time)_scopes` method:
 
 ```ruby
 # app/models/my_model.rb
 class MyModel < ActiveRecord::Base
-  time_scope :created_at, verb: :constructed
+  datetime_scopes :created_at, prefix: "issued", time_zone: "Ekaterinburg"
 end
 
-# ...
-MyModel.constructed_at_or_before(7.days.ago)
+# All records created yesterday (in Ekaterinburg)
+MyModel.issued_on_day(Date.yesterday)
 ```
-
-#### About time zones
-
-Any argument passed to the `time_scope`'s scopes are first converted to the
-time-object in current time zone (with `#in_time_zone` method).
-Then ActiveSupport helpers are used to derive an appropriate time range
-for the query. E.g. the expression
-
-```ruby
-MyModel.created_at_day(d)  # 'd' is a date/time object
-```
-
-is identical to
-
-```ruby
-MyModel.where(
-  "created_at >= ? AND created_at <= ?",
-  d.in_time_zone.beginning_of_day,
-  d.in_time_zone.end_of_day
-)
-```
-
-### With `date` attributes
-
-Use the `date_scope` method:
-
-```ruby
-# app/models/my_model.rb
-class MyModel < ActiveRecord::Base
-  date_scope :construction_date
-end
-
-```
-
-The model has all these scopes:
-* construction_within_days(from, to)
-* construction_within_months(from, to)
-* construction_within_years(from, to)
-* construction_at_day(t)
-* construction_at_month(t)
-* construction_at_year(t)
-* construction_before_day(t)
-* construction_before_month(t)
-* construction_before_year(t)
-* construction_after_day(t)
-* construction_after_month(t)
-* construction_after_year(t)
-* construction_at_or_before_day(t)
-* construction_at_or_before_month(t)
-* construction_at_or_before_year(t)
-* construction_at_or_after_day(t)
-* construction_at_or_after_month(t)
-* construction_at_or_after_year(t)
-
-Examples:
-
-```ruby
-# Records constructed earlier than on this month
-MyModel.construction_before_month(Time.zone.now)
-```
-
-#### Why `date_scope` instead of `time_scope`?
-
-Any argument passed to the `date_scope`'s scopes are first converted
-to the time-object in current time zone (with `#in_time_zone` method)
-and then to the date-object (with `#to_date`).
-It ensures that all arguments are converted to the date representation
-before passing them to database.
 
 ## TODO
 
-* `*_scope` with `verb: false` to omit the scopes' prefix.
-* `*_scope` with `time_zone: "..."` to do queries in custom time zone.
-* MORE specs.
+- Complete pending tests!
+- ...
 
 ## Contributing
 
-Feel free to contribute!
+Any feedback is welcome!
 
 ## License
 
 Distributed under the MIT License (see LICENSE.txt).
 
-Copyright (c) 2015 Daisuke Taniwaki, Alexey Chernenkov
+Copyright &copy; 2015. Alexey Chernenkov
